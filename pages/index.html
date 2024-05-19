@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleIndex.css">
+    <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+    <title>Saturn</title>
+</head>
+<body>
+        <main>
+            <div id="container">
+                <div id="image"> <img src="../images/saturn 2.png" alt="saturn"></div>
+                <div id="textContainer">
+                    <p onclick="login()">Entrar</p>
+                    <p onclick="register()">Registrar</p>
+                </div>
+                <div id="inputs">
+    
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" id="password">
+                        <div id="btn">
+                            <button type="submit" id="submit">Entrar</button>
+                        </div>
+                </div>
+                <div id="register" style="display: none;">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password">
+                    <div id="btn">
+                        <button type="submit" id="submit">Registrar</button>
+                    </div>
+            </div>
+    
+    
+            </div>
+        </main>
+
+    
+    <script>
+    
+        function login(){
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('inputs').style.display = 'flex';
+        }
+        function register(){
+            document.getElementById('register').style.display = 'flex';
+            document.getElementById('inputs').style.display = 'none';
+        }
+        
+    </script>
+</body>
+</html>
