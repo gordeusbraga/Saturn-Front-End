@@ -31,6 +31,7 @@ const addMessage = (content, fromUser) => {
             </div>
         </div>
     `
+    messages.scrollTop = messages.scrollHeight;
 
     messages.appendChild(message);
     return message;
@@ -38,6 +39,7 @@ const addMessage = (content, fromUser) => {
 
 const send = async () => {
     const content = document.getElementById('content');
+    const messages = document.querySelector('.messages');
 
     if (content.value === '') {
         return alert('Digite algo!');
@@ -67,6 +69,7 @@ const send = async () => {
                 message.querySelector('p').innerText = '';
             }
 
+            messages.scrollTop = messages.scrollHeight;
             message.querySelector('p').innerText += event.data;
         }
 
