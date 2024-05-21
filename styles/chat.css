@@ -72,6 +72,7 @@ main{
     justify-content: center;
     height: 500px;
     overflow-y: auto;
+    border-radius: 50px;
 }
 #client{
     margin-top: 50px;
@@ -97,25 +98,26 @@ main{
     padding: 5px;
 }
 main::-webkit-scrollbar {
-    width: 12px; /* Largura da barra de rolagem */
+    width: 12px; 
 }
 
-/* Estilo da trilha da barra de rolagem */
+
 main::-webkit-scrollbar-track {
-    background: #000000; /* Cor da trilha */
-    border-radius: 10px; /* Borda arredondada */
+    background: #000000; 
+    border-radius: 10px; 
 }
 
-/* Estilo do polegar da barra de rolagem */
+
 main::-webkit-scrollbar-thumb {
-    background: purple; /* Cor do polegar */
-    border-radius: 10px; /* Borda arredondada */
+    background: purple; 
+    border-radius: 10p;
 }
 
-/* Estilo do polegar da barra de rolagem ao ser clicado */
+
 main::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Cor do polegar ao ser clicado */
+    background: #555; 
 }
+
 
 
 
