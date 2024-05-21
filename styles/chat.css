@@ -79,7 +79,42 @@ main{
 }
 #bot{
     margin-right: 100px;
-    margin-top: 50px;
+     margin-top: 50px;
+}
+#botImg{
+    width: 60px;
+    float: left;
+    margin-top: 6%;
+    margin-right: 7%;
+}
+#perfil{
+    width: 60px;
+    float: right;
+    margin-top: 6%;
+    margin-left: 7%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100%;
+    padding: 5px;
+}
+main::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Estilo da trilha da barra de rolagem */
+main::-webkit-scrollbar-track {
+    background: #000000; /* Cor da trilha */
+    border-radius: 10px; /* Borda arredondada */
+}
+
+/* Estilo do polegar da barra de rolagem */
+main::-webkit-scrollbar-thumb {
+    background: purple; /* Cor do polegar */
+    border-radius: 10px; /* Borda arredondada */
+}
+
+/* Estilo do polegar da barra de rolagem ao ser clicado */
+main::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do polegar ao ser clicado */
 }
 
 
@@ -88,6 +123,7 @@ main{
     main{
         background-image: none;
         background-color: rgb(0, 0, 0);
+        
         
         
     }
