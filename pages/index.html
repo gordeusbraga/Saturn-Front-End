@@ -1,58 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styleIndex.css">
     <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+    <script src="../scripts/api.js" defer></script>
     <title>Saturn</title>
 </head>
+
 <body>
-        <main>
-            <div id="container">
-                <div id="image"> <img src="../images/saturn 2.png" alt="saturn"></div>
-                <div id="textContainer">
-                    <p onclick="login()">Entrar</p>
-                    <p onclick="register()">Registrar</p>
-                </div>
-                <div id="inputs">
-    
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-                        <label for="password">Senha</label>
-                        <input type="password" name="password" id="password">
-                        <div id="btn">
-                            <button type="submit" id="submit">Entrar</button>
-                        </div>
-                </div>
+    <main>
+        <div id="container">
+            <div id="image"> <img src="../images/saturn 2.png" alt="saturn"></div>
+            <div id="textContainer">
+                <p onclick="login()">Entrar</p>
+                <p onclick="register()">Registrar</p>
+            </div>
+
+            <div id="inputs">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+
                 <div id="register" style="display: none;">
                     <label for="name">Nome</label>
                     <input type="text" name="name" id="name">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email">
-                    <label for="password">Senha</label>
-                    <input type="password" name="password" id="password">
-                    <div id="btn">
-                        <button type="submit" id="submit">Registrar</button>
-                    </div>
-            </div>
-    
-    
-            </div>
-        </main>
+                </div>
 
-    
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password">
+
+                <div id="btn">
+                    <button type="submit" id="submit" onclick="auth()">Entrar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
     <script>
-    
-        function login(){
+
+        let context = 'login'
+
+        function login() {
+            context = 'login'
             document.getElementById('register').style.display = 'none';
-            document.getElementById('inputs').style.display = 'flex';
         }
-        function register(){
+
+        function register() {
+            context = 'register'
             document.getElementById('register').style.display = 'flex';
-            document.getElementById('inputs').style.display = 'none';
         }
-        
+
+        async function auth() {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            if (context == 'login') {
+                const response = await API.login(email, password);
+
+                if (response.error) {
+                    return alert(response.message);
+                }
+
+                const token = response.token;
+                if (token) {
+                    console.log(token);
+                    API.setToken(token);
+                    window.location.href = '/pages/chat.html';
+                    return;
+                }
+
+                alert('Erro interno ao fazer login');
+                return;
+            }
+
+            let name = document.getElementById('name').value;
+            const response = await API.register(email, name, password);
+
+            if (response.error) {
+                return alert(response.message);
+            }
+
+            alert('Usuário cadastrado com sucesso');
+            login();
+        }
+
     </script>
 </body>
+
 </html>
