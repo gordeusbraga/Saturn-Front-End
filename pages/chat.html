@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
-        integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
-        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script src="../scripts/api.js" defer></script>
     <script src="../scripts/chat.js" defer></script>
@@ -17,14 +16,34 @@
 </head>
 
 <body>
-    <header>
-        <img class="saturn" src="../images/saturn 2.png" alt="saturn">
-        <p>Saturn</p>
-    </header>
-    <main>
-        <div class="tool-bar">
+    <div class="toolbar">
+        <div class="toolbar-buttons-container">
+            <div class="toolbar-buttons-top">
+                <ion-icon name="menu-sharp" class="icon opened" id="menu" onclick="toggleMenu()"></ion-icon>
+            </div>
+            <div class="toolbar-buttons-center">
+                <ion-icon class="icon" name="home-outline"></ion-icon>
+                <ion-icon class="icon" name="search-outline"></ion-icon>
+                <ion-icon class="icon" name="bookmarks-outline"></ion-icon>
+            </div>
+            <div class="toolbar-buttons-bottom">
+                <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+            </div>
         </div>
+        <div class="toolbar-container">
+        </div>
+    </div>
+
+    <div class="chat-container">
+
         <div class="messages">
+            <header>
+                <div class="image-container">
+                    <img class="saturn" width="50" src="../images/saturn 2.png" alt="saturn">
+                    <p>Saturn</p>
+                </div>
+            </header>
+
             <div class="message-container bot">
                 <div class="message">
                     <pre>Olá, sou seu assistente pessoal do Saturn, qual sua duvida?</pre>
@@ -33,20 +52,22 @@
 
             <div class="message-container">
                 <div class="message">
-                    <pre>Olá, farei perguntas daqui em diante...</pre>
+                    <pre>Ok...</pre>
                 </div>
             </div>
+        </div>
 
-        </div>
-    </main>
-    <footer>
-        <div class="input-container">
-            <input type="text" placeholder="Digite seu texto..." id="content">
-            <div class="send-container" onclick="send()">
-                <p>></p>
+        <footer>
+            <div class="input-container">
+                <input type="text" placeholder="Digite seu texto..." id="content">
+                <div class="send-container" onclick="send()">
+                    <p>></p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+
+    </div>
+
 </body>
 
 </html>

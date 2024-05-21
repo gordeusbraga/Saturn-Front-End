@@ -17,7 +17,6 @@ main {
 
 body {
     display: flex;
-    flex-direction: column;
     background-image: url("../images/image\ 2.png");
     background-attachment: fixed;
     background-size: 100%;
@@ -25,7 +24,12 @@ body {
     width: 100%;
     height: 100vh;
     background-color: black;
-    overflow: hidden;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 header {
@@ -34,42 +38,98 @@ header {
     align-items: center;
     margin-right: 20px;
     gap: 10px
+        /* position: fixed;
+    display: flex;
+    top: 1px;
+    right: 20px; */
 }
 
 header p {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 1.7rem;
     color: purple;
     margin-top: 3%;
     margin-left: 2%;
 }
 
 .saturn {
-    width: 90px;
+    width: 50px;
 }
 
-#enviar {
-    border-radius: 100%;
-    background-color: rgba(0, 0, 0, 0.048);
-    padding: 15px;
-    font-size: 20px;
-    padding-left: 30px;
-    padding-right: 25px;
-    border-right: 1px solid purple;
-    margin-left: -65px;
+.image-container {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.toolbar-buttons-container {
+    width: 7vw;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar-buttons-top {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar-buttons-center {
+    display: flex;
+    padding-top: 50px;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.toolbar-buttons-bottom {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
 }
 
 
-.tool-bar {
-    /* background-color: green; */
-    min-width: 10%;
+.toolbar-container {
+    width: 20vw;
+    background-color: #1F1F1F;
+    transition: all 0.5s ease
+}
+
+.hidden {
+    width: 0px;
+}
+
+.icon {
+    color: white;
+    font-size: 30px;
+}
+
+.opened {
+    transform: rotate(90deg);
+}
+
+.closed {
+    width: 0px;
+}
+
+#menu {
+    transition: all 0.5s ease
 }
 
 .messages {
     flex-grow: 1;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 28em;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -83,10 +143,10 @@ header p {
 
 .message {
     display: flex;
-    max-width: 400px;
+    max-width: 20em;
     background-color: rgb(41, 38, 38);
-    padding: 30px;
-    border-radius: 40px;
+    padding: 15px 30px;
+    border-radius: 15px;
     border: 2px solid purple;
 }
 
@@ -103,6 +163,12 @@ header p {
 footer {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
@@ -114,7 +180,6 @@ input {
     border: none;
     border-right: none;
     color: white;
-    width: 80%
 }
 
 input:focus {
@@ -127,7 +192,7 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.779);
     border: 2px solid purple;
     border-radius: 50px;
-    width: 80%;
+    width: 60%;
 }
 
 .input-container:hover {
@@ -150,6 +215,8 @@ input:focus {
 .send-container:hover {
     background-color: purple
 }
+
+
 
 /* @media screen and (max-width: 500px) {
     main {

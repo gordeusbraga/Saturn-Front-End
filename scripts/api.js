@@ -43,7 +43,8 @@ class API {
     }
 
     static getChatMessages = async (chatId) => {
-        return this.request(`/chat/${chatId}/messages`);
+        return this.request(`/chat/${chatId}/messages`)
+            .then(response => response.json());
     }
 
     static ask = async (chatId, content) => {
@@ -64,7 +65,7 @@ class API {
             });
     }
 
-    static request = async (url, options) => {
+    static request = async (url, options = {}) => {
 
         if (options) {
             if (options.method === 'POST' || options.method === 'PUT' || options.method === 'PATCH') {
@@ -80,7 +81,7 @@ class API {
             options = {
                 ...options,
                 headers: {
-                    ...options.headers,
+                    ...(options.headers ?? {}),
                     Authorization: `Bearer ${token}`
                 }
             }

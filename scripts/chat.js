@@ -1,3 +1,25 @@
+const toggleMenu = () => {
+    const menuButton = document.getElementById('menu');
+    const menuContainer = document.querySelector('.toolbar-container');
+
+
+    if (menuContainer.classList.contains('closed')) {
+        menuContainer.classList.remove('closed');
+        menuButton.classList.add('opened');
+    } else {
+        menuButton.classList.remove('opened');
+        menuContainer.classList.add('closed');
+    }
+
+}
+
+
+const getChatId = () => {
+    // const url = new URL(window.location.href);
+    // return url.searchParams.get('chat_id');
+    return 5;
+}
+
 const addMessage = (content, fromUser) => {
     const messages = document.querySelector('.messages');
 
@@ -28,7 +50,7 @@ const send = async () => {
 
         let started = false;
 
-        const response = await API.ask(5, content.value);
+        const response = await API.ask(getChatId(), content.value);
         const message = addMessage('Pensando na resposta...', false);
 
         if (!response) {
@@ -50,6 +72,7 @@ const send = async () => {
 
         response.onclose = () => {
             content.disabled = false;
+            content.value = '';
         }
 
     } catch (error) {
@@ -63,3 +86,13 @@ window.addEventListener('keydown', (e) => {
         send();
     }
 });
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const messages = await API.getChatMessages(getChatId());
+    if (messages.messages) {
+        messages.messages.forEach(message => {
+            addMessage(message.content, message.fromUser);
+        });
+    }
+
+})
