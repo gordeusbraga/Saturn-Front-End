@@ -1,3 +1,5 @@
+let canSendMessage = false;
+
 const getChatId = () => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('chat');
@@ -7,9 +9,20 @@ const openCreateChatModal = () => {
     document.querySelector('.create-chat-modal').showModal()
 }
 
+const openProfileInfoModal = async () => {
+    await loadProfile()
+    document.querySelector('.profile-info-modal').showModal()
+}
+
 const closeCreateChatModal = () => {
-    loadChats();
+    if (!canSendMessage) {
+        loadChats();
+    }
     document.querySelector('.create-chat-modal').close()
+}
+
+const closeProfileInfo = () => {
+    document.querySelector('.profile-info-modal').close()
 }
 
 const goToHome = () => {
@@ -27,6 +40,7 @@ const onCreateChatClick = async () => {
         return alert('Erro ao criar chat!')
     }
 
+    loadChats();
     window.location.href = `chat.html?chat=${response.chatId}`
 }
 
@@ -66,9 +80,12 @@ const addMessage = (content, fromUser) => {
 
     const message = document.createElement('div');
     message.innerHTML = `
-        <div class="message-container ${fromUser ? '' : 'bot'}">
+        <div class="message-container default" ${fromUser ? '' : 'bot'}>
             <div class="message">
-                <p>${content} </p>
+                <div class="image-container">
+                    <img src="../images/${fromUser ? "person" : "saturn"}.png" alt="">
+                </div>
+                <pre>${content}</pre>
             </div>
         </div>
     `
@@ -79,6 +96,11 @@ const addMessage = (content, fromUser) => {
 }
 
 const send = async () => {
+
+    if (!canSendMessage) {
+        alert('Não foi possível enviar sua mensagem. Verifique se você está em um chat!')
+    }
+
     const content = document.getElementById('content');
     const messages = document.querySelector('.messages');
 
@@ -102,6 +124,8 @@ const send = async () => {
             return alert('Erro ao enviar mensagem!');
         }
 
+        let breakLinesCount = 0;
+
         response.onmessage = (event) => {
 
             if (started === false) {
@@ -110,6 +134,16 @@ const send = async () => {
                 }
                 started = true;
                 message.querySelector('p').innerText = '';
+            }
+
+            if (breakLinesCount > 10) {
+                response.close();
+            }
+
+            if (event.data == '\n') {
+                breakLinesCount++;
+            } else {
+                breakLinesCount = 0;
             }
 
             messages.scrollTop = messages.scrollHeight;
@@ -154,9 +188,20 @@ const loadMessages = async () => {
         return
     }
 
+    const messagesElement = document.querySelector('.messages');
+    messagesElement
+        .querySelectorAll('.message-container')
+        .forEach((element) => {
+            if (!element.classList.contains('default')) {
+                element.remove();
+            }
+        })
+
     messages.messages.forEach(message => {
         addMessage(message.content, message.fromUser);
     });
+
+    canSendMessage = true
 }
 
 const loadChats = async () => {
@@ -191,6 +236,22 @@ const loadChats = async () => {
     loadMessages();
 }
 
+const loadProfile = async () => {
+    const profileName = document.getElementById('profile-name')
+    const profileEmail = document.getElementById('profile-email')
+
+    if (profileEmail && profileName) {
+        const data = await API.getProfileInfo();
+
+        if (data.error) {
+            return alert('Erro ao obter o perfil!')
+        }
+
+        profileEmail.innerText = data.email
+        profileName.innerText = data.username
+    }
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
 
     const chatsList = document.querySelector('.chats-list');
@@ -207,7 +268,8 @@ window.addEventListener('DOMContentLoaded', async () => {
                         return alert('Erro ao deletar chat!');
                     }
 
-                    itemElement.remove();
+                    loadChats();
+                    // itemElement.remove();
                     return;
                 }
             }

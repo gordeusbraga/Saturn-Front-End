@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+}
+
+body {
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.782);
+    border-radius: 10px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.text-container {
+    display: flex;
+
+    font-size: 18px;
+}
+
+.text-container div {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.text-container p {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.selected {
+    color: purple;
+    font-weight: bold;
+}
+
+.text-container p:hover {
+    color: purple;
+    /* text-decoration: underline;
+    text-decoration-color: purple; */
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 65px;
+    color: white;
+}
+
+#register {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid white;
+    padding: 10px;
+}
+
+/* ISSO AQUI É PRA TIRAR AQUELE BRANCO QUANDO SUGERE */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+}
+
+#submit {
+    background-color: #651C77;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    padding-top: 3px;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-image: url("../images/mobile-background.jpg");
+    }
+
+
+
+
+}

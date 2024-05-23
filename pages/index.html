@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styleIndex.css">
-    <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="shortcut icon" href="../images/saturn-icon.png" type="image/x-icon">
     <script src="../scripts/api.js" defer></script>
     <title>Saturn</title>
 </head>
 
 <body>
     <main>
-        <div id="container">
-            <div id="image"> <img src="../images/saturn 2.png" alt="saturn"></div>
-            <div id="textContainer">
-                <p onclick="login()">Entrar</p>
-                <p onclick="register()">Registrar</p>
+        <div class="container">
+            <div class="image-container">
+                <img src="../images/saturn-icon.png" alt="saturn">
+            </div>
+            <div class="text-container">
+                <div>
+                    <p class="selected" id="go-to-login" onclick="login()">ENTRAR</p>
+                </div>
+                <div>
+                    <p onclick="register()" id="go-to-register">REGISTRAR</p>
+                </div>
             </div>
 
-            <div id="inputs">
+            <div class="inputs">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
 
@@ -31,7 +37,7 @@
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password">
 
-                <div id="btn">
+                <div class="button-container">
                     <button type="submit" id="submit" onclick="auth()">Entrar</button>
                 </div>
             </div>
@@ -46,11 +52,27 @@
 
         function login() {
             context = 'login'
+
+            const goToLogin = document.getElementById('go-to-login');
+            const goToRegister = document.getElementById('go-to-register');
+
+            goToLogin.classList.add('selected');
+            goToRegister.classList.remove('selected');
+
+            document.getElementById('submit').innerText = 'Entrar';
             document.getElementById('register').style.display = 'none';
         }
 
         function register() {
             context = 'register'
+
+            const goToLogin = document.getElementById('go-to-login');
+            const goToRegister = document.getElementById('go-to-register');
+
+            goToRegister.classList.add('selected');
+            goToLogin.classList.remove('selected');
+
+            document.getElementById('submit').innerText = 'Registrar';
             document.getElementById('register').style.display = 'flex';
         }
 
@@ -69,7 +91,7 @@
                 if (token) {
                     console.log(token);
                     API.setToken(token);
-                    window.location.href = '/pages/chat.html';
+                    window.location.href = 'home.html';
                     return;
                 }
 

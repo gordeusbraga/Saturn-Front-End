@@ -10,30 +10,86 @@
 
     <title>Home</title>
     <link rel="stylesheet" href="../styles/home.css">
-    <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/saturn-icon.png" type="image/x-icon">
 
     <script>
         function goToChat() {
             window.location.href = "chat.html";
         }
+
+        const openAuthorsModal = () => {
+            const modal = document.querySelector('.authors-modal');
+            modal.showModal();
+        }
+
+        const closeAuthorsModal = () => {
+            const modal = document.querySelector('.authors-modal');
+            modal.close();
+        }
+
+
     </script>
 </head>
 
 <body>
+    <dialog class="authors-modal">
+
+        <div class="container">
+            <div onclick="closeAuthorsModal()" class="icon-button-container">
+                <ion-icon name="close-outline"></ion-icon>
+            </div>
+
+            <div class="header">
+                <p>Criadores do Site</p>
+            </div>
+
+            <div class="content">
+                <table>
+                    <tr>
+                        <td><b style="font-size: 1.2rem;">Nome</b></td>
+                        <td><b style="font-size: 1.2rem;">Área de Desenvolvimento</b></td>
+                    </tr>
+                    <tr>
+                        <td>DAVID HENRIQUE DE ASSIS CARVALHO</td>
+                        <td>DESIGN</td>
+                    </tr>
+                    <tr>
+                        <td>MIGUEL SILVA PINHEIRO</td>
+                        <td>FULL STACK</td>
+                    </tr>
+                    <tr>
+                        <td>MATHEUS BRAGA CARRARO PEDROSA</td>
+                        <td>FRONT-END</td>
+                    </tr>
+                    <tr>
+                        <td>GUSTAVO HENRIQUE DA SILVA ALMEIDA</td>
+                        <td>ANÁLISE DE DADOS</td>
+                    </tr>
+                    <tr>
+                        <td>PEDRO HENRIQUE PINTO TAVARES</td>
+                        <td>COPYWRITING</td>
+                    </tr>
+                    <tr>
+                        <td>VITOR LUIS FERNANDES STARLING BERGAMINI</td>
+                        <td>TESTER</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="about-icon">
+        <div onclick="openAuthorsModal()" class="icon-button-container">
+            <ion-icon name="help-outline"></ion-icon>
+        </div>
+    </div>
+
     <main>
         <div class="icon-container">
-            <img src="../images/saturn 2.png" alt="saturn">
-            <p>Saturn</p>
+            <img src="../images/saturn-icon.png" alt="saturn">
+            <p>SATURN</p>
         </div>
         <div class="buttons">
-            <div class="button" disabled>
-                <div>
-                    <ion-icon name="image-sharp"></ion-icon>
-                </div>
-                <div>
-                    <p>Gerador de Imagem</p>
-                </div>
-            </div>
 
             <div class="button" onclick="goToChat()">
                 <div>
@@ -41,6 +97,15 @@
                 </div>
                 <div>
                     <p>Gerador de Texto</p>
+                </div>
+            </div>
+
+            <div class="button" disabled>
+                <div>
+                    <ion-icon name="image-sharp"></ion-icon>
+                </div>
+                <div>
+                    <p>Gerador de Imagem</p>
                 </div>
             </div>
 

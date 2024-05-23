@@ -23,6 +23,10 @@ class API {
         })
     }
 
+    static getProfileInfo = () => {
+        return this.request('/profile')
+    }
+
     static createChat = async (title) => {
         return this.request('/chat', {
             method: 'POST',

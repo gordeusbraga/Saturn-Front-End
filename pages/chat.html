@@ -12,7 +12,7 @@
     <script src="../scripts/chat.js" defer></script>
 
     <link rel="stylesheet" href="../styles/chat.css">
-    <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/saturn-icon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -33,6 +33,29 @@
                 </div>
                 <div class="dialog-footer">
                     <button onclick="onCreateChatClick()">Criar</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog class="profile-info-modal">
+            <div class="profile-info-modal-container">
+                <div onclick="closeProfileInfo()" class="icon-button-container">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+                <div class="dialog-header">
+                    <p>Seu Perfil</p>
+                </div>
+                <div class="dialog-content">
+                    <table>
+                        <tr>
+                            <td>Nome:</td>
+                            <td><span id="profile-name"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><span id="profile-email"></span></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </dialog>
@@ -58,7 +81,7 @@
                     </div> -->
                 </div>
                 <div class="toolbar-buttons-bottom">
-                    <div class="toolbar-button">
+                    <div class="toolbar-button" onclick="openProfileInfoModal()">
                         <ion-icon class="icon" name="person-circle-outline"></ion-icon>
                     </div>
                 </div>
@@ -88,13 +111,24 @@
             <div class="messages">
                 <header>
                     <div class="image-container">
-                        <img class="saturn" width="50" src="../images/saturn 2.png" alt="saturn">
+                        <img class="saturn" width="50" src="../images/saturn-icon.png" alt="saturn">
                         <p>Saturn</p>
                     </div>
                 </header>
 
-                <div class="message-container bot">
+                <div class="message-container default" bot>
                     <div class="message">
+                        <div class="image-container">
+                            <img src="../images/saturn.png" alt="">
+                        </div>
+                        <pre>Olá, sou seu assistente pessoal do Saturn, qual sua duvida?</pre>
+                    </div>
+                </div>
+                <div class="message-container default">
+                    <div class="message">
+                        <div class="image-container">
+                            <img src="../images/person.png" alt="">
+                        </div>
                         <pre>Olá, sou seu assistente pessoal do Saturn, qual sua duvida?</pre>
                     </div>
                 </div>
