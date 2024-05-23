@@ -16,56 +16,100 @@
 </head>
 
 <body>
-    <div class="toolbar">
-        <div class="toolbar-buttons-container">
-            <div class="toolbar-buttons-top">
-                <ion-icon name="menu-sharp" class="icon opened" id="menu" onclick="toggleMenu()"></ion-icon>
+    <div class="blackground">
+        <dialog class="create-chat-modal">
+            <div class="create-chat-modal-container">
+                <div onclick="closeCreateChatModal()" class="icon-button-container">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+                <div class="dialog-header">
+                    <p>Crie um novo chat</p>
+                </div>
+                <div class="dialog-content">
+                    <div>
+                        <p>Nome do chat</p>
+                        <input type="text" autocomplete="off" placeholder="ex: Duvidas da Escola" id="chat-name">
+                    </div>
+                </div>
+                <div class="dialog-footer">
+                    <button onclick="onCreateChatClick()">Criar</button>
+                </div>
             </div>
-            <div class="toolbar-buttons-center">
-                <ion-icon class="icon" name="home-outline"></ion-icon>
-                <ion-icon class="icon" name="search-outline"></ion-icon>
-                <ion-icon class="icon" name="bookmarks-outline"></ion-icon>
+        </dialog>
+
+        <div class="toolbar">
+            <div class="toolbar-buttons-container">
+
+                <div class="toolbar-buttons-top">
+                    <div class="toolbar-button">
+                        <ion-icon name="menu-sharp" class="icon rotated" id="menu" onclick="toggleMenu()"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="toolbar-buttons-center">
+                    <div class="toolbar-button" onclick="goToHome()">
+                        <ion-icon class="icon" name="home-outline"></ion-icon>
+                    </div>
+                    <!-- <div class="toolbar-button">
+                        <ion-icon class="icon" name="search-outline"></ion-icon>
+                    </div>
+                    <div class="toolbar-button">
+                        <ion-icon class="icon" name="bookmarks-outline"></ion-icon>
+                    </div> -->
+                </div>
+                <div class="toolbar-buttons-bottom">
+                    <div class="toolbar-button">
+                        <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+                    </div>
+                </div>
             </div>
-            <div class="toolbar-buttons-bottom">
-                <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+            <div class="toolbar-container">
+                <div class="toolbar-container-title">
+                    <p>Chats</p>
+                    <div class="icon-button-container">
+                        <ion-icon name="add-outline" onclick="openCreateChatModal()"></ion-icon>
+                    </div>
+                </div>
+                <ul class="chats-list">
+                    <!-- <li class="chat-item " chat-id="-1">
+                        <div class="chat-item-name">
+                            <p>Chat</p>
+                        </div>
+                        <div class="icon-button-container">
+                            <ion-icon class="delete-chat-button" name="trash-outline"></ion-icon>
+                        </div>
+                    </li> -->
+                </ul>
             </div>
         </div>
-        <div class="toolbar-container">
+
+        <div class="chat-container">
+
+            <div class="messages">
+                <header>
+                    <div class="image-container">
+                        <img class="saturn" width="50" src="../images/saturn 2.png" alt="saturn">
+                        <p>Saturn</p>
+                    </div>
+                </header>
+
+                <div class="message-container bot">
+                    <div class="message">
+                        <pre>Olá, sou seu assistente pessoal do Saturn, qual sua duvida?</pre>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="input-container">
+                    <input type="text" autocomplete="off" placeholder="Digite seu texto..." id="content">
+                    <div class="send-container" onclick="send()">
+                        <p>></p>
+                    </div>
+                </div>
+            </footer>
+
         </div>
-    </div>
-
-    <div class="chat-container">
-
-        <div class="messages">
-            <header>
-                <div class="image-container">
-                    <img class="saturn" width="50" src="../images/saturn 2.png" alt="saturn">
-                    <p>Saturn</p>
-                </div>
-            </header>
-
-            <div class="message-container bot">
-                <div class="message">
-                    <pre>Olá, sou seu assistente pessoal do Saturn, qual sua duvida?</pre>
-                </div>
-            </div>
-
-            <div class="message-container">
-                <div class="message">
-                    <pre>Ok...</pre>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <div class="input-container">
-                <input type="text" placeholder="Digite seu texto..." id="content">
-                <div class="send-container" onclick="send()">
-                    <p>></p>
-                </div>
-            </div>
-        </footer>
-
     </div>
 
 </body>

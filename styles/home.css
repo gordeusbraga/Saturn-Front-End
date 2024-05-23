@@ -1,67 +1,109 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
     color: white;
 }
-main{
-    background-image: url("../images/image\ 2.png");
-    background-attachment: fixed;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 100%;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: black;
-}
-button{
-    padding: 30px;
-    padding-top: 40px;
-    background-color: rgba(31, 30, 30, 0.897);
-    color: white;
-    text-decoration: none;
-    border-radius: 15px;
-    border: 2px solid purple;
-    margin-bottom: 15%;
-    font-size: 18px;
 
+main {
+    background-image: url("../images/background.png");
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 50px;
+    background-color: black;
 }
-#home{
-    width: 800px;
-    display: grid;
+
+
+.icon-container {
+    /* width: 800px; */
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
 }
-#btn{
+
+.icon-container p {
+    color: purple;
+    font-weight: bold;
+}
+
+.buttons {
     display: flex;
     justify-content: center;
     gap: 60px;
 }
-img{
-    
-    width: 200px;
-}
-p{
-    color: purple;
-    font-size: 35px;
-    font-weight: 600;
-    margin-left: 25%;
-    margin-top: -40px;
+
+.button {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 210px;
+    height: 120px;
+
+    background-color: rgba(31, 30, 30, 0.897);
+
+    border-radius: 15px;
+    border: 2px solid purple;
+
+    /* font-size: 18px; */
+    cursor: pointer;
 }
 
-@media screen and (max-width: 500px){
-    main{
+.button[disabled] {
+    border: 2px solid purple;
+    cursor: not-allowed;
+}
+
+.button[disabled]:hover {
+    border: 2px solid purple;
+    cursor: not-allowed;
+}
+
+.button:hover {
+    background-color: rgba(31, 30, 30, 0.897);
+    border: 2px solid white;
+}
+
+ion-icon {
+    font-size: 3rem;
+}
+
+.button p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.button div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+img {
+    width: 200px;
+}
+
+
+@media screen and (max-width: 500px) {
+    main {
         background-image: none;
         background-color: rgb(0, 0, 0);
-        
-        
     }
-   
-    
+
+
 }

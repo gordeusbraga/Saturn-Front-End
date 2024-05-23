@@ -14,7 +14,6 @@ class API {
             method: 'POST',
             body: JSON.stringify({ email, password })
         })
-            .then(response => response.json())
     }
 
     static register = async (email, username, password) => {
@@ -22,7 +21,6 @@ class API {
             method: 'POST',
             body: JSON.stringify({ email, username, password })
         })
-            .then(response => response.json());
     }
 
     static createChat = async (title) => {
@@ -39,12 +37,12 @@ class API {
     }
 
     static listChats = async () => {
-        return this.request('/chat/list');
+        return this.request('/chat/list')
+
     }
 
     static getChatMessages = async (chatId) => {
         return this.request(`/chat/${chatId}/messages`)
-            .then(response => response.json());
     }
 
     static ask = async (chatId, content) => {
@@ -52,7 +50,6 @@ class API {
             method: 'POST',
             body: JSON.stringify({ chatId, content })
         })
-            .then(response => response.json())
             .then(data => {
                 if (data.error) {
                     return false;
@@ -87,7 +84,8 @@ class API {
             }
         }
 
-        return fetch(this.baseUrl + url, options);
+        return fetch(this.baseUrl + url, options)
+            .then(response => response.json());
     }
 }
 

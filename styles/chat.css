@@ -16,14 +16,18 @@ main {
 }
 
 body {
-    display: flex;
-    background-image: url("../images/image\ 2.png");
+    background-image: url("../images/background.png");
     background-attachment: fixed;
     background-size: 100%;
     background-repeat: no-repeat;
+
+}
+
+body .blackground {
+    display: flex;
     width: 100%;
     height: 100vh;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .chat-container {
@@ -69,7 +73,7 @@ header p {
 }
 
 .toolbar-buttons-container {
-    width: 7vw;
+    width: 60px;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -100,21 +104,87 @@ header p {
 
 
 .toolbar-container {
-    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
     background-color: #1F1F1F;
-    transition: all 0.5s ease
+    transition: all 0.5s ease;
+}
+
+.toolbar-container-title {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.toolbar-button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.icon-button-container:hover {
+    background-color: #1F1F1F
+}
+
+.toolbar-button:hover {
+    background-color: #1F1F1F;
+}
+
+.chats-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 5px;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.chat-item-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    overflow: hidden;
+}
+
+.selected-chat {
+    background-color: #323232;
 }
 
 .hidden {
     width: 0px;
+    min-width: 0px;
 }
 
 .icon {
     color: white;
-    font-size: 30px;
+    font-size: 2rem;
 }
 
-.opened {
+.rotated {
     transform: rotate(90deg);
 }
 
@@ -133,7 +203,7 @@ header p {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 0px 50px;
+    padding: 0px 50px 10px 50px;
 }
 
 .message-container {
@@ -143,7 +213,7 @@ header p {
 
 .message {
     display: flex;
-    max-width: 20em;
+    max-width: 30em;
     background-color: rgb(41, 38, 38);
     padding: 15px 30px;
     border-radius: 15px;
@@ -216,7 +286,121 @@ input:focus {
     background-color: purple
 }
 
+dialog {
+    min-width: 50%;
+    align-self: center;
+    justify-self: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    border: none;
+    /* display: flex; */
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    gap: 20px
+}
 
+dialog .icon-button-container {
+    font-size: 1.4rem;
+    position: absolute;
+    top: 10px;
+    right: 10px
+}
+
+dialog:focus {
+    outline: none;
+}
+
+.create-chat-modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.dialog-header p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: purple;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    gap: 10px;
+}
+
+.dialog-content div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.dialog-content input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid purple;
+    border-radius: 10px;
+
+}
+
+
+
+.dialog-footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(128, 0, 128, 0.5);
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: purple;
+}
+
+::-webkit-scrollbar-thumb:hover {}
+
+/* .dialog-header {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 1;
+    background-color: red;
+} */
 
 /* @media screen and (max-width: 500px) {
     main {

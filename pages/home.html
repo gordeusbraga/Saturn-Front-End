@@ -1,24 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <title>Home</title>
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="shortcut icon" href="../images/saturn 2.png" type="image/x-icon">
+
+    <script>
+        function goToChat() {
+            window.location.href = "chat.html";
+        }
+    </script>
 </head>
+
 <body>
     <main>
-        <div id="home">
+        <div class="icon-container">
             <img src="../images/saturn 2.png" alt="saturn">
             <p>Saturn</p>
         </div>
-        <div id="btn">
-            <button>Gerador de Imagem</button>
-            <button>Gerador de Texto</button>
-            <button>Gerador de Audio</button>
+        <div class="buttons">
+            <div class="button" disabled>
+                <div>
+                    <ion-icon name="image-sharp"></ion-icon>
+                </div>
+                <div>
+                    <p>Gerador de Imagem</p>
+                </div>
+            </div>
+
+            <div class="button" onclick="goToChat()">
+                <div>
+                    <ion-icon name="chatbox"></ion-icon>
+                </div>
+                <div>
+                    <p>Gerador de Texto</p>
+                </div>
+            </div>
+
+            <div class="button" disabled>
+                <div>
+                    <ion-icon name="volume-high"></ion-icon>
+                </div>
+                <div>
+                    <p>Gerador de Audio</p>
+                </div>
+            </div>
         </div>
     </main>
 
 </body>
+
 </html>
