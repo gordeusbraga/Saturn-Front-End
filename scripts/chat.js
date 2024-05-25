@@ -147,7 +147,7 @@ const send = async () => {
                     return;
                 }
                 started = true;
-                message.querySelector('p').innerText = '';
+                message.querySelector('pre').innerText = '';
             }
 
             if (breakLinesCount > 10) {
@@ -161,7 +161,7 @@ const send = async () => {
             }
 
             messages.scrollTop = messages.scrollHeight;
-            message.querySelector('p').innerText += event.data;
+            message.querySelector('pre').innerText += event.data;
         }
 
         response.onclose = () => {
