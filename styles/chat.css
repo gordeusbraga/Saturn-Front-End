@@ -44,10 +44,6 @@ header {
     align-items: center;
     margin-right: 20px;
     gap: 10px
-        /* position: fixed;
-    display: flex;
-    top: 1px;
-    right: 20px; */
 }
 
 header p {
@@ -201,6 +197,7 @@ header p {
 .messages {
     flex-grow: 1;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
@@ -217,7 +214,7 @@ header p {
 .message-container .message {
     position: relative;
     display: flex;
-    max-width: 30em;
+    max-width: 60vw;
     background-color: rgb(41, 38, 38);
     padding: 15px 30px 15px 30px;
     border-radius: 15px;
@@ -226,6 +223,8 @@ header p {
 
 .message .image-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     align-self: center;
     right: -35px;
@@ -236,10 +235,9 @@ header p {
 }
 
 .message .image-container img {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    margin-right: 10px;
 }
 
 .message pre {
@@ -282,6 +280,7 @@ input {
     border: none;
     border-right: none;
     color: white;
+    min-width: 0px;
 }
 
 input:focus {
@@ -455,5 +454,37 @@ button:hover {
         background-image: url("../images/mobile-background.jpg");
     }
 
+    pre {
+        white-space: pre-wrap;
+        font-size: 0.8rem;
+    }
 
+    .messages {
+        padding: 0px 25px 10px 15px;
+    }
+
+    .message-container .message {
+        padding: 15px;
+        padding-right: 20px;
+        max-width: 70vw;
+    }
+
+    .input-container {
+        flex-grow: 1;
+        margin: 10px 10px;
+    }
+
+    .message-container[bot] .message {
+        padding-left: 20px;
+    }
+
+    .message .image-container {
+        right: -18px;
+        width: 35px;
+        height: 35px;
+    }
+
+    dialog {
+        min-width: 90%;
+    }
 }

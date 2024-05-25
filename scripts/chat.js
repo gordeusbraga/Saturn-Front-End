@@ -1,5 +1,9 @@
 let canSendMessage = false;
 
+const isMobile = () => {
+    return window.innerWidth < 820;
+}
+
 const getChatId = () => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('chat');
@@ -44,14 +48,17 @@ const onCreateChatClick = async () => {
     window.location.href = `chat.html?chat=${response.chatId}`
 }
 
+const getMenuIsClosed = () => {
+    return document.querySelector('.toolbar-container').classList.contains('closed');
+}
+
 const toggleMenu = () => {
     const menuButton = document.getElementById('menu');
-
     const menuContainer = document.querySelector('.toolbar-container');
+    const messages = document.querySelector('.chat-container');
 
 
-    if (menuContainer.classList.contains('closed')) {
-
+    if (getMenuIsClosed()) {
         setTimeout(() => {
             menuContainer.childNodes.forEach(child => {
                 if (child && child.style) {
@@ -60,9 +67,17 @@ const toggleMenu = () => {
             });
         }, 300);
 
+        if (isMobile()) {
+            messages.style.display = 'none';
+        }
+
         menuContainer.classList.remove('closed');
         menuButton.classList.add('rotated');
         return
+    }
+
+    if (isMobile()) {
+        messages.style.display = 'flex';
     }
 
     menuButton.classList.remove('rotated');
@@ -72,7 +87,6 @@ const toggleMenu = () => {
             child.style.display = 'none';
         }
     });
-
 }
 
 const addMessage = (content, fromUser) => {
@@ -167,6 +181,15 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+// on window change size
+window.addEventListener('resize', (add) => {
+    if (isMobile()) {
+        if (!getMenuIsClosed()) {
+            toggleMenu()
+        }
+    }
+})
+
 const loadMessages = async () => {
 
     const chatId = getChatId();
@@ -253,6 +276,12 @@ const loadProfile = async () => {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
+
+    if (isMobile()) {
+        if (!getMenuIsClosed()) {
+            toggleMenu()
+        }
+    }
 
     const chatsList = document.querySelector('.chats-list');
     chatsList.addEventListener('click', async (e) => {

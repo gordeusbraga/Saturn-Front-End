@@ -1,5 +1,6 @@
 class API {
-    static baseUrl = 'https://saturn.learxd.dev/api';
+    // static baseUrl = 'https://saturn.learxd.dev/api';
+    static baseUrl = 'http://localhost:3000';
 
     static setToken = (token) => {
         localStorage.setItem('token', token);
