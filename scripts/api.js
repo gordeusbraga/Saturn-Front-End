@@ -65,7 +65,7 @@ class API {
                 }
 
                 return new WebSocket(
-                    this.wsUrl + data.uuid,
+                    this.wsUrl + '/' + data.uuid,
                     API.getToken()
                 );
             });
