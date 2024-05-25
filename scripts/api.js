@@ -1,6 +1,10 @@
 class API {
+
+    static isProd = window.location.hostname === 'saturn.learxd.dev';
+
     // static baseUrl = 'https://saturn.learxd.dev/api';
-    static baseUrl = 'http://localhost:3000';
+    static baseUrl = this.isProd ? 'https://saturn.learxd.dev/api' : 'http://localhost:3000';
+    static wsUrl = this.isProd ? 'wss://saturn.learxd.dev/ws' : 'ws://localhost:3001';
 
     static setToken = (token) => {
         localStorage.setItem('token', token);
@@ -61,7 +65,7 @@ class API {
                 }
 
                 return new WebSocket(
-                    'ws://localhost:3001/' + data.uuid,
+                    this.wsUrl + data.uuid,
                     API.getToken()
                 );
             });
