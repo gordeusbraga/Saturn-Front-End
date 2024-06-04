@@ -1,0 +1,157 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Use fixed para cobrir toda a tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.659); /* Ajuste a cor e a opacidade conforme necessário */
+    z-index: -1; /* Coloca a camada atrás do conteúdo */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerImage {
+    width: 40%;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.containerText {
+    width: 40%;
+    margin-right: 10%;
+}
+
+#textSaturn {
+    color: #9537AC;
+    font-weight: 600;
+    letter-spacing: 4px;
+    font-size: 30px;
+}
+
+header {
+    width: 50%;
+    display: grid;
+    text-align: center;
+    justify-content: end;
+    align-items: center;
+    height: 200px;
+    margin-right: 10%;
+    margin-left: 35%;
+    padding-right: 5%;
+    padding-top: 2%;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+p {
+    text-align: center;
+    margin-top: 6%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+b, h2 {
+    color: #9537AC;
+}
+
+button {
+    color: white;
+    background-color: #9537AC;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+    margin-top: 10%;
+    margin-left: 15%;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    display: grid;
+    justify-content: end;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    padding-right: 16%;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    .containerImage {
+        width: 80%;
+        margin-right: 0%;
+    }
+    .containerText {
+        width: 80%;
+        margin-right: 0%;
+    }
+    header {
+        width: 80%;
+        display: grid;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: 12%;
+        margin-right: 8%;
+        height: 200px;
+        padding-right: 5%;
+        padding-top: 2%;
+    }
+    footer {
+        width: 100%;
+        padding-right: 0%;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+    body::before {
+        background: rgba(0, 0, 0, 0.579); /* Ajuste a cor e a opacidade conforme necessário */
+    }
+}
